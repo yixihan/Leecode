@@ -88,3 +88,7 @@ values ('2', '3', 'Leetcode', 'California');
 select p.firstName, p.lastName, a.city, a.state
 from Person as p
          left join Address as a on p.personId = a.personId;
+
+select p.firstName, p.lastName, a.city, a.state
+from Person as p
+         left join Address as a on a.personId = p.personId;
