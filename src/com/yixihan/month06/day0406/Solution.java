@@ -1,9 +1,7 @@
 package com.yixihan.month06.day0406;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 /**
  * 树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。
@@ -31,62 +29,85 @@ import java.util.Queue;
  */
 public class Solution {
 
-    private int[] e;
-    private Queue<Integer> queue;
-
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
-
-        boolean[][] graph = new boolean[n][n];
-        boolean[] visited = new boolean[n];
-        e = new int[n];
-        queue = new LinkedList<> ();
-
-        //初始化构建图
+        List<Integer> res = new ArrayList<> ();
+        int[][] gra = new int[n][];
         for (int[] edge : edges) {
-            graph[edge[0]][edge[1]] = true;
-            graph[edge[1]][edge[0]] = true;
-            e[edge[0]]++;
-            e[edge[1]]++;
-
-        }
-
-        //去除最外层的节点
-        while (n > 2) {
-            //遍历图,找到最外层节点
-            findOuter ();
-            while (!queue.isEmpty ()) {
-                Integer v = queue.poll ();
-                e[v]--;
-                n--;
-                visited[v] = true;
-                for (int i = 0; i < graph[v].length; i++) {
-                    if (graph[v][i]) {
-                        e[i]--;
-                        graph[v][i] = false;
-                        graph[i][v] = false;
-                    }
-                }
-
-
+            int a = edge[0], b = edge[1];
+            if (gra[a] == null) {
+                gra[a] = edge;
+            } else {
+                gra[b] = edge;
             }
         }
+        int root = getRoot (gra);
+        int[] node = getNode (gra, root);
+        root = reverse (gra, root, node[0]);
+        node = getNode (gra, root);
 
-        List<Integer> rt = new ArrayList<> ();
-        for (int i = 0; i < visited.length; i++) {
-            if (!visited[i]) {
-                rt.add (i);
-            }
+        int len = node[1] / 2;
+        int p = node[0];
+        while (len-- != 0) {
+            p = getNext (gra, p);
+        }
+        res.add (p);
+        if ((node[1] & 1) == 1) {
+            res.add (getNext (gra, p));
         }
 
-        return rt;
+        return res;
     }
 
-    public void findOuter() {
-        for (int i = 0; i < e.length; i++) {
-            if (e[i] == 1) {
-                queue.add (i);
+    private int reverse(int[][] gra, int root, int p) {
+        int ret = p;
+        int[] pre = null;
+        while (p != root) {
+            int next = getNext (gra, p);
+            int[] temp = gra[p];
+            gra[p] = pre;
+            pre = temp;
+            p = next;
+        }
+        gra[root] = pre;
+        return ret;
+    }
+
+    private int[] getNode(int[][] gra, int root) {
+        int n = gra.length;
+        int max = 0, node = 0;
+        int[] h = new int[n];
+        int[] stack = new int[n];
+        int size = 0;
+        for (int i = 0; i < n; i++) {
+            int p = i, count = 0;
+            while (p != root && h[p] == 0) {
+                stack[size++] = p;
+                p = getNext (gra, p);
+            }
+            while (size != 0) {
+                int temp = stack[--size];
+                h[temp] = h[p] + 1;
+                if (h[temp] > max) {
+                    max = h[temp];
+                    node = temp;
+                }
+                p = temp;
             }
         }
+        return new int[]{node, h[node]};
+    }
+
+    private int getRoot(int[][] gra) {
+        int p = 0;
+        while (gra[p] != null) {
+            p = getNext (gra, p);
+        }
+        return p;
+    }
+
+    private int getNext(int[][] gra, int p) {
+        int[] ret = gra[p];
+        return ret[0] == p ? ret[1] : ret[0];
     }
 
 }
