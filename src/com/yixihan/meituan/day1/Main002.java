@@ -1,4 +1,4 @@
-package com.yixihan.meituan;
+package com.yixihan.meituan.day1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
