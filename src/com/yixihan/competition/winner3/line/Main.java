@@ -1,4 +1,4 @@
-package com.yixihan.competition.line;
+package com.yixihan.competition.winner3.line;
 
 /**
  * @author : yixihan

@@ -1,4 +1,4 @@
-package com.yixihan.competition.lottery;
+package com.yixihan.competition.winner3.lottery;
 
 import java.util.Scanner;
 

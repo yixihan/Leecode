@@ -1,4 +1,4 @@
-package com.yixihan.competition.interest;
+package com.yixihan.competition.winner3.interest;
 
 import java.io.BufferedReader;
 import java.io.IOException;

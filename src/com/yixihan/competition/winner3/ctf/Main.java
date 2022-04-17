@@ -1,4 +1,4 @@
-package com.yixihan.competition.ctf;
+package com.yixihan.competition.winner3.ctf;
 
 import java.util.Scanner;
 

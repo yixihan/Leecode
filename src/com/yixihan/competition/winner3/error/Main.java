@@ -1,4 +1,4 @@
-package com.yixihan.competition.error;
+package com.yixihan.competition.winner3.error;
 
 import java.util.Scanner;
 

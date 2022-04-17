@@ -1,4 +1,4 @@
-package com.yixihan.competition.mp4;
+package com.yixihan.competition.winner3.gift;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,35 +8,21 @@ import java.util.StringTokenizer;
 
 /**
  * @author : yixihan
- * @create : 2022-03-27-11:36
+ * @create : 2022-03-27-11:04
  */
 public class Main {
 
-    static int count = 0;
-    static int n = 0;
-    
     public static void main(String[] args) {
         InputStream inputStream = System.in;
-        InputReader in = new InputReader (inputStream);
-        n = in.nextInt ();
-        
-        dfs (1);
-    }
+        InputReader in = new InputReader(inputStream);
+        int maxVal = Integer.MIN_VALUE;
+        int n = in.nextInt ();
+        for (int i = 0; i < n; i++) {
+            maxVal = Math.max (maxVal, in.nextInt ());
+        }
 
-    private static void dfs(int x) {
-        System.out.println (x + ".mp4");
-        count++;
-        if (count >= 50) {
-            System.exit (0);
-        }
-        if (x * 10 <= n) {
-            dfs (x * 10);
-        }
-        if (x + 1 <= n && x / 10 == (x + 1) / 10) {
-            dfs (x + 1);
-        }
+        System.out.println (maxVal);
     }
-
 
     static class InputReader {
         public BufferedReader reader;
