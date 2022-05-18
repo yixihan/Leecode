@@ -1,4 +1,4 @@
-package com.yixihan.month8.day0516;
+package com.yixihan.month08.day0516;
 
 /**
  * 设计一个算法，找出二叉搜索树中指定节点的“下一个”节点（也即中序后继）。
