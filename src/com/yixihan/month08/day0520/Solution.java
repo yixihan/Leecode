@@ -1,5 +1,8 @@
 package com.yixihan.month08.day0520;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * 给你一个区间数组 intervals ，其中 intervals[i] = [starti, endi] ，且每个 starti 都 不同 。
  * <p>
