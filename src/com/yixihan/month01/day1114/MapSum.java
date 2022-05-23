@@ -2,7 +2,7 @@ package com.yixihan.month01.day1114;
 
 /**
  *
- * 实现一个 MapSum 类，支持两个方法，insert 和 sum：
+ * 实现一个 MapSum 类，支持两个方法，insert 和 sum：
  *
  * MapSum() 初始化 MapSum 对象
  * void insert(String key, int val) 插入 key-val 键值对，字符串表示键 key ，整数表示值 val 。如果键 key 已经存在，那么原来的键值对将被替代成新的键值对。
