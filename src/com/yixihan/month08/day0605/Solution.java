@@ -47,10 +47,4 @@ public class Solution {
 
         return new double[]{ras1 + x, ras2 + y};
     }
-
-    static class Main {
-        public static void main(String[] args) {
-            new Solution (5.2, 0.0, 0.0).randPoint ();
-        }
-    }
 }
