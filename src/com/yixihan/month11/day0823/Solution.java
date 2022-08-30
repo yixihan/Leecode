@@ -1,5 +1,7 @@
 package com.yixihan.month11.day0823;
 
+import java.util.Arrays;
+
 /**
  * 一个 n x n 的二维网络 board 仅由 0 和 1 组成 。每次移动，你能任意交换两列或是两行的位置。
  * <p>
