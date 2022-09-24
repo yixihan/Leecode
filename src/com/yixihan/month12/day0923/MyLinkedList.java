@@ -1,4 +1,4 @@
-package com.yixihan.month12;
+package com.yixihan.month12.day0923;
 
 /**
  * 设计链表的实现。您可以选择使用单链表或双链表。
