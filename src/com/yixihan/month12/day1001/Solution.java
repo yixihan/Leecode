@@ -48,6 +48,32 @@ package com.yixihan.month12.day1001;
 public class Solution {
 
     public String reformatNumber(String number) {
+        number = number.replaceAll (" ", "");
+        number = number.replaceAll ("-", "");
+        StringBuilder sb = new StringBuilder ();
+        char[] arr = number.toCharArray ();
+        int len = arr.length;
+        int cnt = 0;
+        int i = 0;
+        for (; len - i > 4; i++) {
+            sb.append (arr[i]);
+            if (++cnt >= 3) {
+                cnt = 0;
+                sb.append ("-");
+            }
+        }
+
+        if (len - i == 4 && (cnt == 1 || cnt == 0)) {
+            sb.append (number, i, i + 2).append ("-").append (number, i + 2, i + 4);
+        } else if (len - i == 4 && (cnt == 2)) {
+            sb.append (number, i, i + 1).append ("-").append (number, i + 1, i + 4);
+        } else {
+            sb.append (number, i, len);
+        }
+
+        return sb.toString ();
+
+        /*
         StringBuilder tmp = new StringBuilder ();
         StringBuilder sb = new StringBuilder ();
         for (char c : number.toCharArray ()) {
@@ -55,27 +81,31 @@ public class Solution {
                 tmp.append (c);
             }
         }
-        System.out.println (tmp);
 
         int len = tmp.length ();
         int flag = len % 3;
         int count = len / 3;
         int cnt = 0;
         for (int i = 0; i < len; i++) {
-            if (cnt < count) {
+            if (cnt >= count) {
                 if (flag == 1) {
                     sb.insert (sb.length () - 2, "-").deleteCharAt (sb.length () - 1).append (tmp.charAt (i));
                 } else if (flag == 2){
                     sb.append (tmp.substring (i));
                 }
+                break;
             } else {
                 sb.append (tmp.substring (i, i + 3)).append ("-");
                 cnt++;
                 i += 2;
             }
-            System.out.println (sb);
+        }
+
+        if (flag == 0) {
+            sb.deleteCharAt (sb.length () - 1);
         }
 
         return sb.toString ();
+         */
     }
 }
