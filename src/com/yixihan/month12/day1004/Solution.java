@@ -25,20 +25,20 @@ import java.util.Stack;
 public class Solution {
 
     public int minAddToMakeValid(String s) {
-        Stack<Character> stack = new Stack<> ();
+        int index = 0;
         int cnt = 0;
         for (char c : s.toCharArray ()) {
             if (c == '(') {
-                stack.push (c);
+                index++;
             } else if (c == ')') {
-                if (!stack.isEmpty ()) {
-                    stack.pop ();
+                if (index > 0) {
+                    index--;
                 } else {
                     cnt++;
                 }
             }
         }
 
-        return stack.size () + cnt;
+        return index + cnt;
     }
 }
