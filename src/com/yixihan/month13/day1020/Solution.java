@@ -1,5 +1,7 @@
 package com.yixihan.month13.day1020;
 
+import org.junit.Test;
+
 /**
  * 我们构建了一个包含 n 行( 索引从 1  开始 )的表。首先在第一行我们写上一个 0。
  * 接下来的每一行，将前一行中的0替换为01，1替换为10。
@@ -55,5 +57,10 @@ public class Solution {
         System.out.println (tmp);
         sb = new StringBuilder (tmp);
         dfs (n - 1);
+    }
+
+    @Test
+    public void test () {
+        System.out.println (32 ^ 6);
     }
 }
