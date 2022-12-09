@@ -36,7 +36,7 @@ import java.util.PriorityQueue;
 public class Solution {
 
     public int reachableNodes(int[][] edges, int maxMoves, int n) {
-        List<int[]>[] g = new ArrayList<>[n];
+        List<int[]>[] g = new ArrayList[n];
         Arrays.setAll (g, e -> new ArrayList<int[]> ());
         for (int[] e : edges) {
             int u = e[0], v = e[1], cnt = e[2];
